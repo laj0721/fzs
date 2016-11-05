@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/ >
+    <title></title>
+    <style>
+        @keyframes myfirst
+        {
+            0% {left: 100px;top:100px;}
+            50% {left: 80px;top:80px;}
+            100% {left: 100px;top:100px;}
+        }
+
+        @-webkit-keyframes myfirst
+        {
+            0% {left: 100px;top:100px;}
+            50% {left: 80px;top:80px;}
+            100% {left: 100px;top:100px;}
+        }
+        img{position: absolute; left: 100px; top:100px;animation: myfirst 0.3s;-webkit-animation: myfirst 0.3s;}
+    </style>
+    <script type="text/javascript" src="ngDemo/js/jquery.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		var elems = document.getElementsByTagName('li');
+	        for(var i = 0; i < elems.length ; i++){
+	            (function(i){
+	            	elems[i].addEventListener('click', function (e) {
+			            console.log('I am link #' + i);
+			        }, 'false');
+			    })(i);
+	        }
+            var data = [];
+			for (var k = 0; k < 3; k++) {
+			    (function(k){
+				  	data[k] = function () {
+				    console.log(k);
+				  };
+				})(k);
+			}			
+    	});
+    	var date = new Date();
+    	var year = date.getFullYear();
+    	var date2 = new Date(year, 12, 31, 23, 59, 59); 
+    	var time = (date2 - date)/1000;
+    	var day = Math.floor(time/(24*60*60));
+    	var hour = Math.floor(time%(24*60*60)/(60*60));
+    	var minu = Math.floor(time%(24*60*60)%(60*60)/60);
+    	var sec = Math.floor(time%(24*60*60)%(60*60)%60);
+    	console.log(year+"年："+day+","+hour+","+minu+","+sec);
+        function change(obj){
+            var parent =obj.parentNode; 
+                parent.removeChild(obj); 
+                parent.appendChild(obj);
+        }
+    </script>
+</head>
+<body>
+<div>
+<img src="9.png">
+<input type="button" id ="button2" value="2" />
+</div>
+</body>
+</html>
